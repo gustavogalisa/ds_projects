@@ -18,16 +18,14 @@ class FacialExpressionModel(object):
                      "Surpreso"]
 
     def __init__(self, model_json_file, model_weights_file):
-        # load model from JSON file
+        # carrega o modelo a partir do JSON
         with open(model_json_file, "r") as json_file:
             loaded_model_json = json_file.read()
             self.loaded_model = model_from_json(loaded_model_json)
 
-        # load weights into the new model
+        # carrega os weights para o novo modelo
         self.loaded_model.load_weights(model_weights_file)
-        #self.loaded_model.compile()
-        #self.loaded_model._make_predict_function()
-
+        
     def predict_emotion(self, img):
         global session
         set_session(session)
